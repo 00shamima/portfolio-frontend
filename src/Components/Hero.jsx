@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link as LinkIcon, Download } from 'lucide-react';
+import { Link as LinkIcon} from 'lucide-react';
 import apiService from '../api/apiService';
 
 const PRIMARY_BG = '#1A1423';     
@@ -41,15 +41,7 @@ const Hero = () => {
         return () => clearInterval(timer);
     }, [heroData.subtitles]);
 
-    const handleDownload = () => {
-        const resumeUrl = "/Resume.pdf"; 
-        const link = document.createElement("a");
-        link.href = resumeUrl;
-        link.download = "Resume.pdf";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
+    
 
     if (loading) return <div className="min-h-screen" style={{backgroundColor: PRIMARY_BG}} />;
 
@@ -102,10 +94,12 @@ const Hero = () => {
                                 <LinkIcon size={18} /> View My Work
                             </button>
                         </a>
-                        <button onClick={handleDownload} className="flex items-center gap-2 px-8 py-3 rounded-lg font-bold border-2 hover:bg-white/5 transition-all"
+                        <a href="#contact">
+                        <button  className="flex items-center gap-2 px-8 py-3 rounded-lg font-bold border-2 hover:bg-white/5 transition-all"
                                 style={{ borderColor: ACCENT_COLOR, color: ACCENT_COLOR }}>
-                            <Download size={18} /> Download CV
+ Lets Talk
                         </button>
+                        </a>
                     </div>
                 </motion.div>
 
